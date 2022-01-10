@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('#b1').click(function () {
+                userValue = $('#userId').val() // = document.getElementById('userId').value
+                console.log(userValue + "님 환영합니다.")
+
+                if (userValue.length < 4) { // 4글자 이상이 아닐 경우, 경고창 띄우기 + 입력한 값 제거
+                    alert("4글자 이상 입력 요망.")
+                    $('#userId').val('')
+                } else { // 4글자 이상이면, 네이버로
+                    alert("4글자 이상 확인. 네이버로")
+                    location.href = "http://naver.com"
+                }
+            })
+
+            $('#b2').click(function () {
+                n1Value = parseInt($('#n1').val())
+                n2Value = parseInt($('#n2').val())
+                result = n1Value + n2Value
+                console.log("두 수의 합은 " + result)
+                $('div').html("두 수의 합은 " + result)
+            })
+        })
+    </script>
+</head>
+<body>
+<input name="userId" id="userId" value="root"><br> {# 리스트로 가져옴 #}
+<button id="b1">아이디 제출 버튼</button>
+<hr>
+숫자1: <input name="n1" id="n1" value="1111"><br>
+숫자2: <input name="n2" id="n2" value="2222"><br>
+<button id="b2">두 수의 합</button>
+<hr>
+<div style="color: red"></div>
+</body>
+</html>

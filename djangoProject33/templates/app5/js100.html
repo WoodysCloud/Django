@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+{#    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>#}
+    <script type="text/javascript">
+        $(function () {
+            function sum() {
+                nums = {{ site }}
+                result = nums[0] + nums[1] + nums[2]
+                alert(result)
+            }
+
+            function naver() {
+                console.log({{ url }})
+            }
+            })
+    </script>
+</head>
+<body>
+<button id="b2">naver</button>
+<button id="b3">daum</button>
+<button id="b4">google</button>
+<button id="b1">나를 누르면 더하기가 뿅!</button>
+</body>
+</html>
