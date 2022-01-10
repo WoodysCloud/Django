@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        // document = new Document() => body 부분에 써주는 javascript 객체
+        // 미리 객체를 만들어서 제공 => bulit-in object (빌트인 객체, 내장된 객체)
+        document.write('hello')
+        location.href = "http://www.google.com"
+        document.getElementById('idValue')
+    </script>
+
+    <style>
+        td {
+            text-align: center;
+        }
+        #td1 { /* id중에서 td1을 선택 */
+            background: pink;
+        }
+        #td2 { /* id중에서 td2을 선택 */
+            background: yellow;
+        }
+        #td3 { /* id중에서 td3을 선택 */
+            background: lime;
+        }
+        #td4 { /* id중에서 td4을 선택 */
+            background: lightblue;
+        }
+        .td5 { /* class중에서 td1을 선택 */
+            background: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+<h1>나의 첫 표(테이블)내용입니다.</h1>
+
+<hr color="red">
+
+<table border="1">
+    <tr>
+        <td id="td1">취미종류</td>
+        <td id="td2">취미금액</td>
+        <td id="td3">취미금액</td>
+    </tr>
+    <tr>
+        <td class="td5">달리기</td>
+        <td>1000</td>
+        <td>여의도 공원</td>
+    </tr>
+    <tr>
+        <td class="td5">등산</td>
+        <td>2000</td>
+        <td>관악산</td>
+    </tr>
+    <tr>
+        <td class="td5">독서</td>
+        <td>10000</td>
+        <td>강남역</td>
+    </tr>
+    <tr align="center">
+        <td colspan="3" id="td4">첫 페이지로</td>
+    </tr>
+</table>
+
+<hr>
+
+<ul type="">
+    <li>커피</li>
+    <li>tv</li>
+    <li>라디오</li>
+</ul>
+
+<ol>
+    <li>오전수업</li>
+    <li>점심</li>
+    <li>오후수업</li>
+</ol>
+</body>
+</html>

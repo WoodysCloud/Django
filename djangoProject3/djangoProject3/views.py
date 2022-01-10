@@ -9,4 +9,5 @@ def index(request):
                         "<a href=start2>to start2 page</a><br>" +
                         # "<a href=start3>to start3 page</a><br>" +
                         "<a href=admin>to admin page</a><br>" +
+                        "<a href=app5>to app5 page</a><br>" +
                         "</body>")

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background: lime;
+        }
+    </style>
+</head>
+<body>
+<h1>html5 page입니다.</h1>
+<hr>
+<h2>전달된 요일은 {{ today }}<br>
+전달된 날짜는 {{ when }}</h2>
+<hr color="red">
+<a href="/app5/js01">to js01</a><br>
+<a href="{% url 'js01' %}">to js01(name)</a><br> {# 등록돼있는 해당 url이 들어간 주소로 연결 #}
+<a href="{% url 'js02' %}">to js02(name)</a><br>
+<a href="{% url 'js03' %}">to js03(name)</a><br>
+<a href="{% url 'js04' %}">to js04(name)</a><br>
+<a href="{% url 'js05' %}">to js05(name)</a><br>
+<a href="{% url 'js05_1' %}">to js05_1(name)</a><br>
+</body>
+</html>

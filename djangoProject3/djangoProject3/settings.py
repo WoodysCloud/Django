@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'app2.apps.App2Config',
     'app3.apps.App3Config',
     'app4.apps.App4Config',
+    'app5.apps.App5Config',
 ]
 
 MIDDLEWARE = [
@@ -124,5 +125,8 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
