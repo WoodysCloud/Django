@@ -3,99 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'out.css' %}">
+
+    <script type="text/javascript" src="{% static 'out.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jquery-3.6.0.js' %}"></script>
+    <script type="text/javascript">
         $(function () {
-            $('#towebsite').click(function () {
-                website = $('#website').val()
-                console.log(website)
-                if (website === "naver") {
-                    alert("to naver")
-                    location.href = "http://www.naver.com"
-                } else if (website === "daum") {
-                    alert("to daum")
-                    location.href = "http://www.daum.net"
-                } else if (website === "google") {
-                    alert("to google")
-                    location.href = "http://www.google.com"
-                } else {
-                    alert("오타")
-                }
-            })
-
-            $('#plus').click(function () {
-                n1 = parseInt($('#n1').val())
-                n2 = parseInt($('#n2').val())
-                result = n1+n2
-                console.log(n1)
-                console.log(n2)
-                console.log(result)
-                $('#operdiv').html("두 수의 합은 " + result)
-            })
-            $('#minus').click(function () {
-                n1 = parseInt($('#n1').val())
-                n2 = parseInt($('#n2').val())
-                result = n1-n2
-                console.log(n1)
-                console.log(n2)
-                console.log(result)
-                $('#operdiv').html("두 수의 차는 " + result)
-            })
-            $('#multi').click(function () {
-                n1 = parseInt($('#n1').val())
-                n2 = parseInt($('#n2').val())
-                result = n1*n2
-                console.log(n1)
-                console.log(n2)
-                console.log(result)
-                $('#operdiv').html("두 수의 곱은 " + result)
-            })
-            $('#divi').click(function () {
-                n1 = parseInt($('#n1').val())
-                n2 = parseInt($('#n2').val())
-                result = n1/n2
-                console.log(n1)
-                console.log(n2)
-                console.log(result)
-                $('#operdiv').html("두 수의 나눗셈은 " + result)
-            })
-
-            $('#login').click(function () {
-                userId = $('#userId').val()
-                userPw = $('#password').val()
-
-                if (userId === "root" && userPw === "1234") {
-                    $('#logindiv').html("로그인 성공")
-                } else if (userId === "root" && userPw !=="1234") {
-                    $('#logindiv').html("비밀번호 오류")
-                } else if (userId !== "root" && userPw ==="1234") {
-                    $('#logindiv').html("아이디 오류")
-                } else {
-                    $('#logindiv').html("아이디, 비밀번호 오류")
-                }
+            //alert('jquery link성공.!!!@@@@@')
+           // outCall()
+            $('button').click(function () {
+                $.ajax({
+                  url : "http://127.0.0.1:5555",
+                  success: function (result) {
+                        alert('내 서버로 ajax통신 성공.!!!')
+                        alert(result)
+                    },
+                    error : function () {
+                        alert('내 서버로 ajax통신 실패.!!!')
+                    }
+                })
             })
         })
     </script>
 </head>
 <body>
-
-가고 싶은 사이트(naver, daum, google)는: <input id="website" value=""><br>
-<button style="color: red" id="towebsite">사이트 기능 처리</button><br>
 <hr>
-
-숫자1: <input id="n1" value=""><br>
-숫자2: <input id="n2" value=""><br>
-<button id="plus">➕</button>
-<button id="minus">➖</button>
-<button id="multi">✖️</button>
-<button id="divi">➗</button>
-<div style="color: red" id="operdiv"></div>
-<hr>
-
-아이디: <input id="userId" value=""><br>
-패스워드: <input id="password" value=""><br>
-<button style="color: gold" id="login">로그인 기능 처리</button>
-<div style="color: red" id="logindiv"></div>
-
+<img src="{% static '013.png' %}" width="200" height="200"><br>
+<button>AJAX Test</button>
 </body>
 </html>

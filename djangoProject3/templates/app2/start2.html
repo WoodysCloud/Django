@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
+        <style>
         body {
-            background: hotpink;
+            background: pink;
         }
     </style>
     <script>
-        alert("app2에 오신 것을 환영합니다!!")
+        alert('app2에 오신 것을 환영합니다.')
     </script>
 </head>
 <body>
-<h1>app2 start page</h1>
+<h1>app2 시작페이지입니다.</h1>
+<br>
+나의 수강 과목은 {{ subject }} <br>
+나의 수강 교실은 {{ class }}입니다.!
 <hr>
-<h2>나의 수강 과목은 {{ subject }}<br>
-나의 수강 교실은 {{ class }}입니다!</h2>
-<hr>
-{# http header에 주소와 함께 따라감 (서버에 요청) #}
 <a href="/start3?n1=100&n2=300&subject={{ subject }}">to start3</a><br>
 <a href="/start3?n1=1111&n2=3333&subject={{ subject }}">to start3</a><br>
 <a href="/start3?n1=5555&n2=1111&subject={{ subject }}">to start3</a><hr>
-<form action="start4" method="post">
-    {% csrf_token %} {# 토큰이 있는 client만 start4 요청 가능 #}
+{#<form action="/start4" method="post">#}
+<form action="{% url 'start4' %}" method="post">
+    {% csrf_token %}
     n1 : <input name="n1" value="2222"><br>
     n2 : <input name="n2" value="3333"><br>
-    <input type="hidden" name="subject" value="{{ subject }}"> {# 숨겨서 보냄 #}
-    <button style="background: aqua; font-family: AppleGothic; font-weight: bold">서버로 계산 요청</button>
+    <input type="hidden" name="subject" value="{{ subject }}">
+    <button style="background: lime; font-family: 'Book Antiqua'; font-weight: bold">서버로 계산 요청</button>
 </form>
 </body>
 </html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<title>Google Map</title>
+       <script async defer
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxF9p0e18rdjf1MXyTVK3evaKUeRXmFG0&callback=initMap&region=kr"></script>
+   <script>
+       var map;
+
+       function initMap() {
+
+           //37.5705805429368, 126.99212654046664
+           comments = ['종로3가역',  '신촌역 이마트', '도봉산!']
+           {{ location }}
+
+           map = new google.maps.Map(document.getElementById('map'), {
+               zoom : 12,
+               center : {
+                       lat : 37.5642135,
+                       lng : 127.0016985
+                   }
+           });
+
+           for (var i = 0; i < 3; i++) {
+               var site = {
+                   lat : lats[i],
+                   lng : lngs[i]
+               };
+
+
+               new google.maps.Marker({
+                   position : site,
+                   map : map,
+                   label : comments[i]
+               });
+           }
+       }
+
+   </script>
+</head>
+<body>
+   <div id="map" style="width: 500px; height: 500px;"></div>
+</body>
+</html>

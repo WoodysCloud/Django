@@ -1,7 +1,7 @@
 """djangoProject3 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.0/topics/http/urls/
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -17,9 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 import app1.views
 import app2.views
-import djangoProject3.views
 import app3.views
 import app4.views
+import djangoProject3.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +27,6 @@ urlpatterns = [
     path('start', app1.views.start),
     path('start2', app2.views.start2),
     path('start3', app3.views.start3),
-    path('start4', app4.views.start4),
-    path('app5', include('app5.urls')),
+    path('start4', app4.views.start4, name='start4'),
+    path('app5', include('app5.urls'))
 ]

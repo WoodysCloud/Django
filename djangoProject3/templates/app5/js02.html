@@ -3,53 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
+    {% load static %}
+    <script type="text/javascript" src="{% static 'jquery-3.6.0.js' %}"></script>
     <script>
-        // document = new Document() => body 부분에 써주는 javascript 객체
-        // 미리 객체를 만들어서 제공 => bulit-in object (빌트인 객체, 내장된 객체)
-        document.write('hello')
-        location.href = "http://www.google.com"
-        document.getElementById('idValue')
-    </script>
+        $(function(){
+            alert('jquery...성공..!!!')
+        })
+        //document = new  Document()
+        //미리 객체를 만들어서 제공하고 있음. 빌트인 객체(내장된 객체)
+        //document.write('hello')
+        //location.href = "http://www.naver.com"
+        //document.getElementById('idValue')
 
+    </script>
     <style>
-        td {
+        td{
             text-align: center;
         }
-        #td1 { /* id중에서 td1을 선택 */
+        /*body > table > tbody > tr:nth-child(1) > td:nth-child(1)*/
+        #td1{  /*id중에서 td1을 선택해라. */
             background: pink;
         }
-        #td2 { /* id중에서 td2을 선택 */
+        #td2{  /*id중에서 td2을 선택해라. */
             background: yellow;
         }
-        #td3 { /* id중에서 td3을 선택 */
+        #td3{  /*id중에서 td3을 선택해라. */
             background: lime;
         }
-        #td4 { /* id중에서 td4을 선택 */
+        #td4{  /*id중에서 td4을 선택해라. */
             background: lightblue;
         }
-        .td5 { /* class중에서 td1을 선택 */
+        .td5{ /*class중에서 td5을 선택해라. */
             background: antiquewhite;
-        }
+          }
     </style>
 </head>
 <body>
-<h1>나의 첫 표(테이블)내용입니다.</h1>
-
-<hr color="red">
-
+<H1>나의 첫 표(테이블)입니다.</H1>
+<HR COLOR="RED">
 <table border="1">
     <tr>
         <td id="td1">취미종류</td>
         <td id="td2">취미금액</td>
-        <td id="td3">취미금액</td>
+        <td id="td3">취미장소</td>
     </tr>
-    <tr>
+        <tr>
         <td class="td5">달리기</td>
         <td>1000</td>
         <td>여의도 공원</td>
     </tr>
-    <tr>
+        <tr>
         <td class="td5">등산</td>
         <td>2000</td>
         <td>관악산</td>
@@ -59,23 +62,20 @@
         <td>10000</td>
         <td>강남역</td>
     </tr>
-    <tr align="center">
-        <td colspan="3" id="td4">첫 페이지로</td>
+    <tr>
+        <td  id="td4" colspan="3">첫 페이지로</td>
     </tr>
 </table>
-
 <hr>
-
-<ul type="">
-    <li>커피</li>
-    <li>tv</li>
-    <li>라디오</li>
+<ul> <!-- unordered list: 순서없는 목록-->
+     <li>커피</li>
+     <li>tv</li>
+     <li>라디오</li>
 </ul>
-
-<ol>
-    <li>오전수업</li>
-    <li>점심</li>
-    <li>오후수업</li>
+<ol> <!-- ordered list: 순서있는 목록-->
+     <li>수업</li>
+     <li>점심</li>
+     <li>수업2</li>
 </ol>
 </body>
 </html>

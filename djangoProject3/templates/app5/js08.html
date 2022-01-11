@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+    $(function () {
+        $('#b2').click(function () {
+            pw1Value = $('#pw1').val()
+            pw2Value = $('#pw2').val()
+            pwResult = pw1Value == pw2Value
+            if (pwResult){
+                 $('#result').html('pw동일함.')
+            }else{
+                 $('#result').html('pw동일하지 않음.')
+            } //else
+        }) //b2 close
+       $('#pw2').keyup(function () {
+            pw1Value = $('#pw1').val()
+            pw2Value = $('#pw2').val()
+            pwResult = pw1Value == pw2Value
+            if (pwResult){
+                 $('#result').html('pw동일함.')
+            }else{
+                 $('#result').html('pw동일하지 않음.')
+            } //else
+       })
+
+    })
+    function pay() {
+        priceValue = parseInt(document.getElementById('price').value)
+        countValue = parseInt(document.getElementById('count').value)
+        payValue = priceValue * countValue
+        document.getElementById('result').innerText = payValue
+    }
+    </script>
+</head>
+<body>
+하나당 가격: <input id="price" value="1000"><br>
+물건의 개수: <input id="count" value="5"><br>
+<button id="b1" onclick="pay()">결제하기</button>
+<hr>
+패스워드1: <input id="pw1" value="aaaa"><br>
+패스워드2: <input id="pw2" ><br>
+<button id="b2">패스워드가 동일한지 체크</button>
+<hr color="red">
+<div id="result" style="background: yellow; color: red; font-size: large"></div>
+</body>
+</html>

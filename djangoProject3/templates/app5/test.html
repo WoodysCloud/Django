@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <style>
+        body {
+            background: yellow;
+        }
+
+    </style>
+</head>
+<body>
+<a href="/member/test2">
+        <button style="background: red">회원가입 페이지로</button>
+</a><br>
+<hr color="blue">
+{% if test_list %}
+   {% for one in test_list %}
+       <a href="/app5/test/{{ one.id }}">
+        <button style="background: lime">회원상세페이지로</button>
+       </a><br>
+       회원id:  {{ one.id }} <br>
+       회원name:  {{ one.name }} <br>
+       회원tel:  {{ one.tel }} <br>
+       회원addr:  {{ one.addr }} <br><hr color="red">
+   {% endfor %}
+{% endif %}
+</body>
+</html>

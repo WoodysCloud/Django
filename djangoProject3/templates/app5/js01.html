@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'out.css' %}">
     <script>
-        name = prompt("당신의 이름은?? ")
-        alert("당신의 이름은 " + name + "이시군요!")
+        name = prompt('당신의 이름은??')
+        alert('당신의 이름은 ' + name + '이시군요!')
+
     </script>
 </head>
 <body>
-
+<hr>
+<img src="{% static '013.png' %}">
 </body>
 </html>

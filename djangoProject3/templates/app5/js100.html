@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('#b1').click(function () {
+                data = {{ site }}
+                result = data[0] + data[1] + data[2]
+                alert(result)
+                $('div').text(result)
+            })
+            names = ''
+            {% for one in name %}
+               names = names + " " + '{{ one }}'
+            {% endfor %}
+            alert(names)
+
+            names2 = [] //new Array()
+            {% for one in name %}
+               names2.push('{{one}}')
+            {% endfor %}
+            alert(names2)
+
+            $('#b2').text('{{ url.u1 }}')
+            $('#b3').text('{{ url.u2 }}')
+            $('#b4').text('{{ url.u3 }}')
+        })
+    </script>
+</head>
+<body>
+<hr><button id="b2"></button><button id="b3"></button><button id="b4"></button>
+<button id="b1">나를 눌러요.!</button>
+<div style="color: red"></div>
+</body>
+</html>
