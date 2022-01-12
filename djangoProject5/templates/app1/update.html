@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            margin-left: 100px;
+        }
+        .left {
+            width: 100px;
+        }
+        .right {
+            width: 500px;
+        }
+        #center {
+            height: 100px;
+        }
+        input, textarea {
+            background: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+<h3>게시물 수정화면입니다.</h3>
+<hr>
+<form action="/app1/update2" method="post"> <!-- 데이터 넘겨주기 -->
+    {% csrf_token %}
+    <table border="1">
+        <tr>
+            <td>아이디</td>
+            <td>
+                <input name="id" value="{{ one.id }}" readonly> <!-- 변경불가항목 -->
+            </td>
+        </tr>
+        <tr>
+            <td>제목</td>
+            <td>
+                <input name="title" value="{{ one.title }}">
+            </td>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td id="center">
+                <!-- 여러 줄 작성: input 대신 textarea -->
+                <textarea name="content"
+                          cols="25"
+                          rows="10"
+                          placeholder="여기에 내용을 적어주세요.">
+                    {{ one.content }}
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>작성자</td>
+            <td>
+                <input name="writer" value="{{ one.writer }}" readonly> <!-- 변경불가항목 -->
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button style="background: palevioletred";>게시물 수정 요청</button>
+            </td>
+        </tr>
+</table>
+</form>
+</body>
+</html>

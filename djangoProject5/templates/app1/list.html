@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            width: 80%;
+        }
+        td {
+            text-align: center;
+        }
+        .td1 {
+            width: 15%;
+        }
+        .td1:hover {
+            width: 100px;
+            background: hotpink;
+            font-weight: bolder;
+        }
+        .td2 {
+            width: 60%;
+        }
+        .td2:hover {
+            width: 100px;
+            background: deeppink;
+            font-weight: bolder;
+            text-decoration: underline;
+        }
+        .td3 {
+            width: 25%;
+        }
+        .td3:hover {
+            width: 100px;
+            background: pink;
+            font-weight: bolder;
+        }
+        .tdtop {
+            background: lime;
+        }
+    </style>
+</head>
+<body>
+<h3>게시판 리스트입니다.</h3>
+<hr color="blue">
+<a href="/app1/insert">
+    <button style="background: red; color: white; font-weight: bold;">
+        게시판 글쓰기
+    </button>
+</a>
+<table>
+    <tr>
+        <td class="td1 tdtop">번호</td> <!-- 클래스 2개 -->
+        <td class="td2 tdtop">제목</td>
+        <td class="td3 tdtop">작성자</td>
+    </tr>
+    {% if list %}
+        {% for one in list %}
+            <tr>
+                <td class="td1">{{ one.id }}</td>
+                <td class="td2">
+                    <a href="/app1/one/{{ one.id }}">
+                        {{ one.title }}
+                    </a>
+                <td class="td3">{{ one.writer }}</td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+</table>
+</body>
+</html>

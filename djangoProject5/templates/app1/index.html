@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            text-align: center;
+        }
+        body {
+            background: gold;
+            color: deeppink;
+            font-size: 10px;
+            font-family: AppleGothic;
+        }
+        button {
+            width: 150px;
+            height: 50px;
+            background: aqua;
+        }
+        #left {
+            width: 100px;
+            background: whitesmoke;
+        }
+        table {
+            margin-left: 200px;
+        }
+        button:hover {
+            width: 150px;
+            height: 50px;
+            background: deeppink;
+            font-weight: bolder;
+            font-size: 20px;
+            border-radius: 20px;
+            border: 10px solid palevioletred;
+        }
+    </style>
+</head>
+<body>
+<h3>게시판 메인 화면입니다.</h3>
+<hr>
+<table border="1">
+    <tr>
+        <td id="left">게시판 목록</td>
+        <td>
+            <a href="{% url 'list' %}"><button>GO</button></a>
+        </td>
+    </tr>
+    <tr>
+        <td id="left">게시판 글쓰기</td>
+        <td>
+            <a href=""><button>GO</button></a>
+        </td>
+    </tr>
+    <tr>
+        <td id="left">홈페이지 시작페이지로</td>
+        <td>
+            <a href=""><button>GO</button></a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
