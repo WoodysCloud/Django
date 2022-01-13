@@ -1,7 +1,9 @@
+from django.core.paginator import Paginator
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from app1.models import Board
+from app1.models import Board, Reply
 
 
 def index(request):
@@ -11,26 +13,33 @@ def list(request):
     print('list함수 호출됨.')
 
     # board 테이블에서 전체 리스트를 검색해서 가지고 온다.
+    page = request.GET.get('page', 1) # 게시판 페이지 기능 추가
     board_list = Board.objects.order_by('-id') # db에 게시판은 위에서 아래로 순서대로 생성되지만 보여줄 땐 최근게시물이 맨 위로! => 역순으로!
     print('db에서 가지고 온 data>> ', board_list)
 
     # 가지고 온 데이터를 dictionary로 만들어준다.
+    paginator = Paginator(board_list, 5) # 5개씩 1페이지에.. paginator 객체 생성
+    page_obj = paginator.get_page(page) # 각 해당 페이지만
     context = {
-        'list' : board_list
+        'list' : page_obj
     }
 
     # 데이터를 넣어서 보내줄 template지정, 데이터를 넘겨줌.
     return render(request, 'app1/list.html', context)
 
-def one(request, id):
-    print("받은 id >> ", id)
+def one(request, id): # 상세페이지
+    print("받은 id >> ", id) # id: 게시판 번호(auto increased)
 
     # id를 가지고 검색해주세요.
     one = Board.objects.get(id=id)
 
+    # bid를 가지고 댓글 검색
+    list = Reply.objects.filter(bid=id) # 여러개 받아올 땐 filter()
+
     # dictionary로 만들어주세요.
     context = {
-        "one" : one
+        "one" : one,
+        "list" : list
     }
 
     # template에 넣어주세요.
@@ -55,6 +64,25 @@ def insert2(request):
     # 객체 생성 -> save()
     board.save()
     return redirect('/app1/list')
+
+def insert3(request):
+
+    data = request.GET
+
+    print(data)
+    print("댓글의 bid >> ", data.get('bid'))
+    print("댓글의 content >> ", data.get('content'))
+    print("댓글의 writer >> ", data.get('writer'))
+
+    bid = data.get('bid')
+    content = data.get('content')
+    writer = data.get('writer')
+    reply = Reply(bid=bid, content=content, writer=writer)
+    reply.save()
+
+    # ajax로는 redirect 불가
+    return HttpResponse('- <img src="/static/IMG_6380.jpeg" width="20" height="20">' +
+                        content + '(' + writer + ')<br>')
 
 def delete(request, id):
     print("받은 id는 >> ", id)
@@ -99,3 +127,11 @@ def update2(request):
     # 수정된 것 저장
     row.save()
     return redirect('/app1/list') # url 주소 => '/' 부터 입력
+
+def many_insert(request):
+    for i in range(300):
+        b = Board(title='title' + str(i),
+                  content='content' + str(i),
+                  writer='user' + str(i))
+        b.save()
+    return redirect('/app1/list')

@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2988ce6-1d57-4158-a739-b6d8a0d46a3f" name="Changes" comment="2022-01-10 월요일">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/eccc2334-dcac-4fe0-a494-2071be62151c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/eccc2334-dcac-4fe0-a494-2071be62151c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c2988ce6-1d57-4158-a739-b6d8a0d46a3f" name="Changes" comment="2022-01-10 월요일" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -148,6 +145,7 @@
       <workItem from="1641771299468" duration="22570000" />
       <workItem from="1641860389833" duration="21498000" />
       <workItem from="1641953315448" duration="617000" />
+      <workItem from="1642033450006" duration="338000" />
     </task>
     <task id="LOCAL-00001" summary="2022-01-06 11:29">
       <created>1641436207274</created>

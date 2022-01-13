@@ -3,6 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('#rb').click(function () {
+                content = $('reply').val()
+                $.ajax({
+                    url : "/app1/insert3",
+                    data : {
+                        bid : '{{ one.id }}',
+                        content : content,
+                        writer : '{{ request.session.writer }}' // 로그인 한 사람 정보(세션), 변수로 잡히기 때문에 '' 필요
+                    },
+                    success : function (res) {
+                        res2 = '- <img src="/static/IMG_6380.jpeg" width="20" height="20">' +
+                            '{{ r.content }} ({{ r.writer }}) <br>'
+                        $('div').append(res2)
+                        print('ajax 성공')
+                    },
+                    error : function () {
+                        alert('ajax 오류')
+                    }
+                })
+            })
+        })
+    </script>
     <style>
         table {
             margin-left: 100px;
@@ -49,6 +75,21 @@
             <a href="/app1/list">
                 <button style="background: greenyellow">게시물 리스트로</button>
             </a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div>
+                {% for r in list %}
+                    - <img src="/static/IMG_6380.jpeg" width="20" height="20">
+                    {{ r.content }} ({{ r.writer }}) <br>
+                {% endfor %}
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            댓글: <input id="reply"><button id="rb">댓글달기</button>
         </td>
     </tr>
 </table>
