@@ -16,7 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+import signPage.views
+
 urlpatterns = [
-    path('', include('mainPage.urls')),
-    path('signPage', include('signPage.urls')),
+    path('/signUp/', signPage.views.signUp, name='signUp'),
+    path('/signUp2/', signPage.views.signUp2, name='signUp2'),
+    path('/signIn/', signPage.views.signIn, name='signIn'),
+    path('/signIn2/', signPage.views.signIn2, name='signIn2'),
+    path('/logOut/', signPage.views.logOut, name='logOut'),
+    path('/userUpdate/<id>/', signPage.views.userUpdate, name='userUpdate'),
+    path('/userUpdate2/', signPage.views.userUpdate2, name='userUpdate2'),
 ]

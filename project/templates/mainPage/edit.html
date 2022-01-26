@@ -16,6 +16,27 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
 
+    <script>
+        $(function () {
+            $('.comment').click(function (res) {
+                console.log(res)
+                $.ajax({
+                    url: "http://127.0.0.1:8000/comment",
+                    success: function (res) {
+                        console.log("ajax 통신 성공")
+                        console.log(res)
+                        $('.result').html(res)
+                    },
+                    error: function (res) {
+                        console.log('서버 오류')
+                        console.log(res)
+                        print('서버 오류')
+                    }
+                })
+            })
+        })
+    </script>
+
     <style>
         @media screen and (max-width: 500px) {
             .pc-menu{
@@ -121,19 +142,14 @@
                 right: 5%
             }
         }
+        .comment {
+            background: rgba(0,0,0,0);
+            border: 0;
+            color: darkgrey;
+            padding-left: 0;
+        }
         .dropdown-toggle::after {
             content: none;
-        }
-        .img-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 100%;
-        }
-        .img-wrapper img {
-            position: absolute;
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
         }
     </style>
 </head>
@@ -149,7 +165,6 @@
                 {% if request.session.user %}
                     <div class="pc-menu">
                         <span>당신의 mbti는 {{ usermbti }}입니다.</span>
-                        <a class="dropdown-item" href="/insert">게시물작성</a>
                         <a class="dropdown-item" href="/signPage/logOut">로그아웃</a>
                         <a class="dropdown-item" href="/signPage/userUpdate/{{ request.session.user }}">회원정보수정</a>
                     </div>
@@ -165,7 +180,6 @@
                          style="width: 20px; height: 17px; padding: 0; margin-right: 10px; border: 0">
                     {% if request.session.user %}
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <li><a class="dropdown-item" href="/insert">게시물작성</a></li>
                             <li><a class="dropdown-item" href="/signPage/logOut">로그아웃</a></li>
                             <li><a class="dropdown-item" href="/signPage/userUpdate/{{ request.session.user }}">회원정보수정</a></li>
                         </ul>
@@ -220,43 +234,36 @@
         </li>
     </ul>
 </header>
-{% if board %}
-    {% for data in board %}
+<article>
+    <form action="/insert2" method="post"> <!-- 데이터 넘겨주기 -->
+        {% csrf_token %}
+
         <div class="container" style="width: 50%;">
-            <div class="row" style="margin: 0.4rem 0 0.4rem 0;">
-                <div class="col-auto me-auto" style="font-weight: bold">{{ data.title }}</div>
-                <div class="col-auto dropdown">
-                    <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" style="color: #333; margin-top: 2px" role="button" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-                            <path d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-                        </svg>
-                    </a>
-                    {% if data.writer == request.session.nickname %}
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/edit/{{ data.id }}">게시물 수정</a></li>
-                            <li><a class="dropdown-item" href="/delete/{{ data.id }}">게시물 삭제</a></li>
-                        </ul>
-                    {% endif %}
-                </div>
-            </div>
+
             <div class="row">
-                <img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/164135347807448952.jpeg?gif=1&w=850">
+                <input name="title" value="{{ board.title }}">
             </div>
-            <div class="row" style="margin: 0.3rem 0 0.3rem 0;">
-                <div class="col-1" style="padding-left: 0">
-                    <button style="background: rgba(0,0,0,0); border: 0"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/></svg></button>
-                </div>
+
+            <div class="row">
+                <input name="img" value="{{ board.img }}">
             </div>
+
             <div class="row">
                 <p style="margin-bottom: 0">
-                    <span style="font-weight: bold; font-size: large">{{ data.writer }} &emsp;</span>
-                    <span>{{ data.content }}</span>
+                    <span class="col-3" style="font-weight: bold;">
+                        {{ request.session.nickname }} &emsp;
+                    </span>
+                    <span>
+                        <input name="content" value="{{ board.content }}">
+                    </span>
                 </p>
             </div>
+
+            <div class="d-flex flex-row-reverse bd-highlight">
+                <button>게시물수정</button>
+            </div>
         </div>
-        <hr>
-    {% endfor %}
-{% endif %}
+    </form>
+</article>
 </body>
 </html>
